@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-
+const express = require('express');
+const router = express.Router();
+const { postRegister } = require('../controllers/index')
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index', { title: 'Surf shop' });
@@ -12,9 +12,7 @@ router.get('/register', (req, res, next) => {
 });
 
 /* GET register */
-router.post('/register', (req, res, next) => {
-  res.send('POST /register')
-});
+router.post('/register', postRegister);
 
 /* GET login */
 router.get('/login', (req, res, next) => {
@@ -31,7 +29,7 @@ router.get('/profile', (req, res, next) => {
   res.send('GET /profile')
 });
 
-/* PUT profile */
+/* PUT profile/:user_id */
 router.put('/profile/:user_id', (req, res, next) => {
   res.send('PUT /profile/:user_id')
 });
@@ -46,12 +44,12 @@ router.put('/forgot', (req, res, next) => {
   res.send('PUT /forgot-password')
 });
 
-/* GET /reset  */
+/* GET /reset/:token  */
 router.get('/reset/:token', (req, res, next) => {
   res.send('GET /reset-password')
 });
 
-/* PUT /reset  */
+/* PUT /reset/:token  */
 router.put('/reset/:token', (req, res, next) => {
   res.send('PUT /reset-password')
 });
