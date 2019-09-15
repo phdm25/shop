@@ -6,7 +6,7 @@ const logger = require('morgan');
 const passport = require('passport');
 const session = require('express-session')
 const User = require('./models/user');
-
+const mongoose = require('mongoose')
 //require routes
 const indexRouter = require('./routes/index');
 const postsRouter = require('./routes/posts');
@@ -14,6 +14,12 @@ const reviewsRouter = require('./routes/reviews');
 
 const app = express();
 
+mongoose.connect('mongodb://localhost:27017/surf-shop', { useNewUrlParser: true, useUnifiedTopology: true })
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log('----> create <----')
+});
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
