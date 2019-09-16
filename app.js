@@ -18,7 +18,7 @@ mongoose.connect('mongodb://localhost:27017/surf-shop', { useNewUrlParser: true,
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
-  console.log('----> create <----')
+  console.log('----> connected to db <----')
 });
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -40,6 +40,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(passport.initialize())
 // Mount Routes
 app.use('/', indexRouter);
 app.use('/posts', postsRouter);
