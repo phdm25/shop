@@ -1,30 +1,28 @@
 const express = require('express');
 const router = express.Router();
+const { errorHandler } = require('../middlewear');
+const {
+    getPosts,
+    newPost,
+    createPost,
+    showPost,
+    editPost
+} = require('../controllers/post');
 
 /* GET posts listing. */
-router.get('/', (req, res, next) => {
-    res.send('INDEX /posts')
-});
+router.get('/', errorHandler(getPosts));
 
 /* GET posts new */
-router.get('/new', (req, res, next) => {
-    res.send('NEW /posts/new')
-});
+router.get('/new', newPost);
 
 /* POST create post /posts */
-router.post('/', (req, res, next) => {
-    res.send('CREATE /posts')
-});
+router.post('/', errorHandler(createPost));
 
 /* GET posts show  /posts/:id */
-router.get('/:id', (req, res, next) => {
-    res.send('SHOW /posts/:id')
-});
+router.get('/:id', errorHandler(showPost));
 
 /* GET posts edit  /posts/:id/edit */
-router.get('/:id/edit', (req, res, next) => {
-    res.send('EDIT /posts/:id/edit')
-});
+router.get('/:id/edit', errorHandler(editPost));
 
 /* PUT posts update /posts/:id */
 router.put('/:id', (req, res, next) => {
