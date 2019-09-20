@@ -3,3 +3,8 @@
 <div>location: <%= post.location%></div>
 <div>description: <%= post.description%></div>
 <div><a href="/posts/<%= post.id%>/edit">edit post</a></div>
+<form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+    <div>
+        <input type="submit" value="delete">
+    </div>
+</form>

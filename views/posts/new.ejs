@@ -1,16 +1,16 @@
 <h1>Post new</h1>
 <form action="/posts" method="POST">
     <div>
-        <input type="text" name="title" placeholder="Title" id="">
+        <input type="text" name="post[title]" placeholder="Title" id="">
     </div>
     <div>
-        <input type="text" name="price" placeholder="Price" id="">
+        <input type="text" name="post[price]" placeholder="Price" id="">
     </div>
     <div>
-        <textarea name="description" id="" placeholder="Description"></textarea>
+        <textarea name="post[description]" id="" placeholder="Description"></textarea>
     </div>
     <div>
-        <input type="text" name="location" placeholder="Location">
+        <input type="text" name="post[location]" placeholder="Location">
     </div>
     <div>
         <input type="submit">
